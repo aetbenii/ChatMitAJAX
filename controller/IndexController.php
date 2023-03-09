@@ -7,5 +7,9 @@ public function loginAktion(){
   
 }
 
+public function chatAktion(){
+    $this->addContext("chat", Chat::findeAlle());
+}
+
 }
 

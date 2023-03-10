@@ -14,17 +14,27 @@
     <script>
             let username = "benjamin";
             let chat = "halsdf";
+        let chats;
 
-        function test() {
-            const xhttp = new XMLHttpRequest();
-            xhttp.onload = function() {
-                //document.getElementById("demo").innerHTML = this.responseText;
-                console.log(this.responseText);
-            }
-        xhttp.open("GET","controller/AjaxController.php?data=187", true);
-        xhttp.send();
-        }
+        // function test() {
+        //     const xhttp = new XMLHttpRequest();
+        //     xhttp.onload = function() {
+        //         //document.getElementById("demo").innerHTML = this.responseText;
+        //         console.log(this.responseText);
+        //     }
+        //     xhttp.open("GET","AjaxController.php?data=187", true);
+        //     xhttp.send();
+        // }
         //setInterval(test, 1300);
+        function test(){
+            fetch('AjaxController.php?data=notempty')
+            .then(response => response.json())
+            .then(data => {
+                chats = data;
+                console.log('Chats: ', data);
+            })
+        }
+
 
         function test2() {
             const xhttp = new XMLHttpRequest();
@@ -35,7 +45,7 @@
                     console.log(this.responseText);
                 }
             }
-            xhttp.open("POST","controller/AjaxController.php");
+            xhttp.open("POST","AjaxController.php");
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhttp.send("name="+username+"&text="+chat+"&datum="+Date.now());
         }

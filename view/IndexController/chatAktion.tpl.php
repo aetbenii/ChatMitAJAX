@@ -7,14 +7,36 @@
     <title>Chat</title>
 </head>
 <body>
+    <div id="chatBox" style="width: 300px; height: 400px; padding: 0.1rem 0.5rem 0rem 0.5rem; background-color: beige;">
     
-    <button onclick="test2()">POST</button>
-    <button onclick="test()">GET</button>
+    </div>
+    <input type="text" id="username" name="username" placeholder="username" required></br>
+    <textarea id="text" name="text" placeholder="Chatte" required></textarea>
+    <button onclick="sende()">Senden</button>
+
+    <button onclick="getChats()">GET</button>
 
     <script>
-            let username = "benjamin";
-            let chat = "halsdf";
-        let chats;
+        getChats();
+
+        function getChats(){
+            let chats;
+            fetch('AjaxController.php?data=notempty')
+            .then(response => response.json())
+            .then(data => {
+                chats = data;
+                console.log('Chats: ', data);
+                createChats(data);
+            }) 
+        }
+        
+        function createChats(chats){
+            let htmlChats = '';
+            chats.forEach(chat => {
+                htmlChats += "<p>"+chat.name+": "+chat.text+"</p>";
+            });
+            document.getElementById("chatBox").innerHTML = htmlChats;
+        }
 
         // function test() {
         //     const xhttp = new XMLHttpRequest();
@@ -26,17 +48,11 @@
         //     xhttp.send();
         // }
         //setInterval(test, 1300);
-        function test(){
-            fetch('AjaxController.php?data=notempty')
-            .then(response => response.json())
-            .then(data => {
-                chats = data;
-                console.log('Chats: ', data);
-            })
-        }
+        
 
-
-        function test2() {
+        function sende() {
+            let username = document.getElementById("username").value;
+            let chat = document.getElementById("text").value;
             const xhttp = new XMLHttpRequest();
             xhttp.onload = function() {
                 if(xhttp.status === 200){
@@ -47,7 +63,9 @@
             }
             xhttp.open("POST","AjaxController.php");
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhttp.send("name="+username+"&text="+chat+"&datum="+Date.now());
+            xhttp.send("name="+username+"&text="+chat);
+
+            getChats();
         }
     </script>
 </body>

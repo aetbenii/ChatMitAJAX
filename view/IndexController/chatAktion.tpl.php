@@ -13,13 +13,13 @@
     <input type="text" id="username" name="username" placeholder="username" required></br>
     <textarea id="text" name="text" placeholder="Chatte" required></textarea>
     <button onclick="sende()">Senden</button>
-
-    <button onclick="getChats()">GET</button>
-
+    <!--
+        <button onclick="getChats()">GET</button>
+    -->
     <script>
         getChats();
 
-        function getChats(){
+        async function getChats(){
             let chats;
             fetch('AjaxController.php?data=notempty')
             .then(response => response.json())
@@ -27,7 +27,7 @@
                 chats = data;
                 console.log('Chats: ', data);
                 createChats(data);
-            }) 
+            });
         }
         
         function createChats(chats){
@@ -35,6 +35,7 @@
             chats.forEach(chat => {
                 htmlChats += "<p>"+chat.name+": "+chat.text+"</p>";
             });
+
             document.getElementById("chatBox").innerHTML = htmlChats;
         }
 
@@ -47,7 +48,7 @@
         //     xhttp.open("GET","AjaxController.php?data=187", true);
         //     xhttp.send();
         // }
-        //setInterval(test, 1300);
+        setInterval(getChats, 400);
         
 
         function sende() {
@@ -64,8 +65,7 @@
             xhttp.open("POST","AjaxController.php");
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhttp.send("name="+username+"&text="+chat);
-
-            getChats();
+            //getChats();
         }
     </script>
 </body>

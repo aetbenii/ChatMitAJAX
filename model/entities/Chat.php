@@ -15,6 +15,14 @@ class Chat{
         return $abfrage->fetchAll();
     }
 
+    public static function findeLetztenZehn(){
+        $sql = 'SELECT * FROM chat ORDER BY id DESC LIMIT 11';
+        $abfrage = DB::getDB()->query($sql);
+        $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Chat');
+        return $abfrage->fetchAll();
+    }
+
+
     public function getId()
     {
         return $this->id;

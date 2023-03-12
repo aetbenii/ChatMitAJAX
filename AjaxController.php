@@ -11,7 +11,7 @@ if($_POST != NULL){
 }
 
 if($_GET != NULL){
-    $chats = Chat::findeAlle();
+    $chats = Chat::findeLetztenZehn();
     $arr = array();
     foreach($chats as $ch){
         array_push($arr,array("name" => $ch->getName(),
@@ -19,8 +19,6 @@ if($_GET != NULL){
     }
     
     //print_r($arr);
-    echo json_encode($arr);
-    
-    
+    echo json_encode(array_reverse($arr));
 }
 

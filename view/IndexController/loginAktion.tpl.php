@@ -1,12 +1,18 @@
+<?php
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
 <body>
     <h1>LOGIN</h1>
+    <form method="POST" action="#">
+        <input type="benutzername" name="benutzername">
+        <input type="password" name="passwort">
+        <input type="submit" name="submit">
+    </form>
+    <a href="index.php?controller=ajax&aktion=chat">test</a>
 </body>
 </html> 

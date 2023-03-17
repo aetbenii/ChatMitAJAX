@@ -5,7 +5,7 @@ spl_autoload_register('autoloadEntities');
 spl_autoload_register('autoloadTraits');
 
 
-$aktion = $_GET['aktion'] ?? 'chat';
+$aktion = $_GET['aktion'] ?? 'login';
 $controller = $_GET['controller'] ?? 'index';
 
 $controllerName = ucfirst($controller) . 'Controller';

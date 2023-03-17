@@ -1,9 +1,9 @@
-setInterval(getChats, 150);
-        //getChats();
+setInterval(getChats, 1000);
 
         function getChats(){
             let chats;
             fetch('AjaxController.php?data=notempty')
+            //fetch('index.php?controller')
             .then(response => response.json())
             .then(data => {
                 chats = data;
@@ -21,17 +21,6 @@ setInterval(getChats, 150);
             document.getElementById("chatBox").innerHTML = htmlChats;
         }
 
-        // function test() {
-        //     const xhttp = new XMLHttpRequest();
-        //     xhttp.onload = function() {
-        //         //document.getElementById("demo").innerHTML = this.responseText;
-        //         console.log(this.responseText);
-        //     }
-        //     xhttp.open("GET","AjaxController.php?data=187", true);
-        //     xhttp.send();
-        // }
-        
-        
 
         function sende() {
             let username = document.getElementById("username").value;
@@ -47,5 +36,4 @@ setInterval(getChats, 150);
             xhttp.open("POST","AjaxController.php");
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhttp.send("name="+username+"&text="+chat);
-            //getChats();
         }

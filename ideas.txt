@@ -1,4 +1,2 @@
-zuerst versuchen wir es mit einer einzigen datenbank tabell
-chat(id, username, text, timestamp)
-und wenn das geht dann erweitern wir es zu user und chat getrennt und machen
-vielleicht das login wenn wir es zeitlich schaffen und lust haben. 
+Login machen mit session und 2 datenbank tabellen mit 
+user(benutzername, passwort) und chat(text, timestamp, userid)

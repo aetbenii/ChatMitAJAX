@@ -34,7 +34,8 @@ abstract class AbstractBase
             $controller = get_class($this);
         }
 
-        $this->template = "view/$controller/$template.tpl.php";
+        //Es gibt kein AjaxController Folder
+        $this->template = "view/IndexController/$template.tpl.php";
     }
 
     protected function getTemplate()

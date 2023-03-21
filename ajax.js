@@ -2,7 +2,7 @@ setInterval(getChats, 1000);
 
         function getChats(){
             let chats;
-            fetch('AjaxController.php?data=notempty')
+            fetch('index.php?controller=ajax&aktion=getChat')
             //fetch('index.php?controller')
             .then(response => response.json())
             .then(data => {
@@ -33,7 +33,7 @@ setInterval(getChats, 1000);
                     console.log(this.responseText);
                 }
             }
-            xhttp.open("POST","AjaxController.php");
+            xhttp.open("POST","index.php?controller=ajax&aktion=sendChat");
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhttp.send("name="+username+"&text="+chat);
         }

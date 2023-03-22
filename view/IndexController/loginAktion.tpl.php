@@ -3,9 +3,11 @@
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login</title>
 </head>
+
 <body>
     <h1>LOGIN</h1>
     <form method="POST" action="#">
@@ -15,4 +17,5 @@
     </form>
     <a href="index.php?controller=ajax&aktion=chat">test</a>
 </body>
-</html> 
+
+</html>

@@ -1,5 +1,5 @@
-setInterval(getChats, 1000);
-
+//setInterval(getChats, 2000);
+getChats();
         function getChats(){
             let chats;
             fetch('index.php?controller=ajax&aktion=getChat')
@@ -7,7 +7,7 @@ setInterval(getChats, 1000);
             .then(response => response.json())
             .then(data => {
                 chats = data;
-                console.log('Chats: ', data);
+                //console.log('Chats: ', data);
                 createChats(data);
             });
         }
@@ -15,7 +15,7 @@ setInterval(getChats, 1000);
         function createChats(chats){
             let htmlChats = '';
             chats.forEach(chat => {
-                htmlChats += "<p>"+chat.name+": "+chat.text+"</p>";
+                htmlChats += "<p>"+chat.name+": "+chat.text.replace(/^\s+|\s+$/gm,'')+"<span>"+chat.datum+"</span></p>";
             });
 
             document.getElementById("chatBox").innerHTML = htmlChats;
@@ -25,6 +25,7 @@ setInterval(getChats, 1000);
         function sende() {
             let username = document.getElementById("username").value;
             let chat = document.getElementById("text").value;
+            //hier beginnt ajax.
             const xhttp = new XMLHttpRequest();
             xhttp.onload = function() {
                 if(xhttp.status === 200){

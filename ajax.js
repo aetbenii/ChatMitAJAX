@@ -1,5 +1,5 @@
-//setInterval(getChats, 2000);
-getChats();
+setInterval(getChats, 1000);
+
         function getChats(){
             let chats;
             fetch('index.php?controller=ajax&aktion=getChat')

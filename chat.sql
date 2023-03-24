@@ -39,8 +39,8 @@ CREATE TABLE `chat` (
 --
 
 INSERT INTO `chat` (`id`, `name`, `text`, `datum`) VALUES
-(1, 'kevin', 'Hallo ich bin Kevin und bin sehr schlau!', '2023-03-09 18:52:48'),
-(2, 'Benjamin', 'Hallo Kevin ich bin Benjamin und bin nicht so schlau!', '2023-03-09 18:55:37');
+(1, 'Kevin', 'Hallo!', '2023-03-09 18:52:48'),
+(2, 'Benjamin', 'Hallo!', '2023-03-09 18:55:37');
 
 --
 -- Indizes der exportierten Tabellen

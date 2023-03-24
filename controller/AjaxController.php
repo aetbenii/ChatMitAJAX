@@ -4,9 +4,11 @@ class AjaxController extends AbstractBase
     //Sendet Daten in die Datenbank. 
     public function sendChatAktion()
     {
-        $chat = new Chat($_POST);
-        $chat->setDatum(date("Y.m.d-H:i:s", time()));
-        $chat->speichere();
+        if($_POST["name"] != ""){
+            $chat = new Chat($_POST);
+            $chat->setDatum(date("Y.m.d-H:i:s", time()));
+            $chat->speichere();
+        }
     }
 
     //Holt Daten von Datenbank.
@@ -18,8 +20,7 @@ class AjaxController extends AbstractBase
             array_push($arr, array(
                 "name" => $ch->getName(),
                 "text" => $ch->getText(),
-                "datum" => explode(" ",$ch->getDatum())[1]
-            ));
+                "datum" => " ".explode(" ",$ch->getDatum())[1]));
         }
         $this->addContext('chats', $arr);
     }
